@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, Button } from 'react-native'
 
-const BlogPostForm = () => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-
+const BlogPostForm = ({onSubmit, initialValues = '' }) => {
+  const [title, setTitle] = useState(initialValues.title);
+  const [content, setContent] = useState(initialValues.content);
+  
   return(
        <View>
         <Text style={styles.label}> Title </Text>
@@ -19,12 +19,18 @@ const BlogPostForm = () => {
           onChangeText={(content) => setContent(content)}/>
         <Button 
           title='Save'
-          onPress={() => {
-            console.log('haha')
-            }} />
+          onPress={() => onSubmit(title, content)}
+          />
     </View>
   );
 }
+// You can use this to create specific default props for a component if writing them in-line doesn't work.
+// BlogPostForm.defaultProps = {
+//   initialValues: {
+//     title: '',
+//     content: '',
+//   }
+// }
 
 const styles = StyleSheet.create({
   input: {

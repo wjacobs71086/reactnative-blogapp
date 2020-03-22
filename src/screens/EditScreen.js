@@ -8,24 +8,17 @@ const EditScreen = ({ navigation }) => {
   const blogPost = state.find(post => post.id === navigation.getParam('id'));
 
   return (
-    <BlogPostForm />
+    <BlogPostForm 
+      onSubmit={(title, content) => {
+        console.log('new stuff', title, content)
+      }}
+      initialValues={{title: blogPost.title , content: blogPost.content}}
+    />
   )
 }
 
 const styles = StyleSheet.create({
-  input: {
-    fontSize: 18,
-    borderWidth: 1,
-    borderColor: 'black',
-    marginBottom: 15,
-    padding: 5,
-    margin: 5,
-  },
-  label: {
-    fontSize: 20,
-    marginBottom: 10,
-    marginLeft: 5,
-  }
+
 });
 
 export default EditScreen;
