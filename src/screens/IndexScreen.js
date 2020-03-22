@@ -9,7 +9,7 @@ const { state , addBlogPost, deleteBlogPost } = useContext(Context);
 
   return (
     <View>
-      <Button title='Add Post' onPress={addBlogPost}></Button>
+      
       <FlatList 
         data={state}
         keyExtractor={key => key.title}
